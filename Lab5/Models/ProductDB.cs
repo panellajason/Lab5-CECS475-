@@ -9,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace Lab5.Models
 {
-    class MemberDB : ObservableObject
+    class ProductDB : ObservableObject
     {
         /// <summary>
         /// The list of members to be saved.
         /// </summary>
-        private ObservableCollection<Member> members;
+        private ObservableCollection<Product> products;
         /// <summary>
         /// Where the database is stored.
         /// </summary>
-        private const string filepath = "../members.txt";
+        private const string filepath = "../products.txt";
         /// <summary>
         /// Creates a new member database.
         /// </summary>
         /// <param name="m">The list to saved from or written to.</param>
-        public MemberDB(ObservableCollection<Member> m)
+        public ProductDB(ObservableCollection<Product> m)
         {
-            members = m;
+            products = m;
         }
         /// <summary>
         /// Reads the saved text file database into the program's list of members.
         /// </summary>
         /// <returns>The list containing the text file data read in.</returns>
-        public ObservableCollection<Member> GetMemberships()
+        public ObservableCollection<Product> GetProducts()
         {
             try
             {
@@ -45,14 +45,14 @@ namespace Lab5.Models
             catch (FormatException)
             {
             
-                Console.WriteLine("Invalid e-mail address format.");
+                Console.WriteLine("Invalid quantity address format.");
             }
-            return members;
+            return products;
         }
         /// <summary>
         /// Saves the program's list of members into the text file database.
         /// </summary>
-        public void SaveMemberships()
+        public void SaveProducts()
         {
             StreamWriter output = new StreamWriter(new FileStream(filepath, FileMode.Create, FileAccess.Write));
 

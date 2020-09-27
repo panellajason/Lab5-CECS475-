@@ -13,30 +13,22 @@ namespace Lab5.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// The list of registered members.
-        /// </summary>
-        private ObservableCollection<Member> members;
-        /// <summary>
-        /// The currently selected member.
-        /// </summary>
-        private Member selectedMember;
-        /// <summary>
-        /// The database that keeps track of saving and reading the registered members.
-        /// </summary>
-        private MemberDB database;
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+       
+        private ObservableCollection<Product> products;
+       
+        private Product selectedProduct;
+        
+        private ProductDB database;
+        
         public MainViewModel()
         {
-            members =
+            products =
             database =
-            members = database.GetMemberships();
+            products = database.GetProducts();
             AddCommand =
             ExitCommand =
             ChangeCommand =
-            Messenger.Default.Register<MessageMember>(this, ReceiveMember);
+            Messenger.Default.Register<MessageProduct>(this, ReceiveProduct);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
         /// <summary>
@@ -44,19 +36,17 @@ namespace Lab5.ViewModel
         /// </summary>
         public ICommand AddCommand { get; private set; }
 
-        /// <summary>
-        /// The currently selected member in the list box.
-        /// </summary>
-        public Member SelectedMember
+        
+        public Product SelectedProduct
         {
             get
             {
-                return selectedMember;
+                return selectedProduct;
             }
             set
             {
-                selectedMember = value;
-                RaisePropertyChanged("SelectedMember");
+                selectedProduct = value;
+                RaisePropertyChanged("SelectedProduct");
             }
         }
         /// <summary>
@@ -83,7 +73,7 @@ namespace Lab5.ViewModel
         /// </summary>
         public void ChangeMethod()
         {
-            if (SelectedMember != null)
+            if (SelectedProduct != null)
             {
                 ChangeWindow change = new ChangeWindow();
                 change.Show();
@@ -95,17 +85,17 @@ namespace Lab5.ViewModel
         /// </summary>
         /// <param name="m">The member to add. The message denotes how it is added.
         /// "Update" replaces at the specified index, "Add" adds it to the list.</param>
-        public void ReceiveMember(MessageMember m)
+        public void ReceiveProduct(MessageProduct m)
         {
             if (m.Message == "Update")
             {
                 _____________________________________
-            database.SaveMemberships();
+            database.SaveProducts();
             }
             else if (m.Message == "Add")
             {
                 ______________________________________
-            database.SaveMemberships();
+            database.SaveProducts();
             }
         }
         /// <summary>
@@ -118,15 +108,15 @@ namespace Lab5.ViewModel
             if (msg.Notification == "Delete")
             {
                 _______________________________________________
-            database.SaveMemberships();
+                database.SaveProducts();
             }
         }
         /// <summary>
         /// The list of registered members.
         /// </summary>
-        public ObservableCollection<Member> MemberList
+        public ObservableCollection<Product> ProductList
         {
-            get { return members; }
+            get { return products; }
         }
     }
 }

@@ -11,31 +11,19 @@ using System.Windows.Input;
 
 namespace Lab5.ViewModel
 {
-    /// <summary>
-    /// The VM for modifying or removing users.
-    /// </summary>
+    
     public class ChangeViewModel : ViewModelBase
     {
-        /// <summary>
-        /// The currently entered first name in the change window.
-        /// </summary>
-        private string enteredFName;
-        /// <summary>
-        /// The currently entered last name in the change window.
-        /// </summary>
-        private string enteredLName;
-        /// <summary>
-        /// The currently entered email in the change window.
-        /// </summary>
-        private string enteredEmail;
+        private string enteredProductId;
 
-        /// <summary>
-        /// Initializes a new instance of the ChangeViewModel class.
-        /// </summary>
+        private string enteredProductName;
+
+        private string enteredQuantity;
+
         public ChangeViewModel()
         {
             _____________________________________
-            Messenger.Default.Register<Member>(this, ___________________ -);
+            Messenger.Default.Register<Product>(this, ___________________ -);
         }
         /// <summary>
         /// The command that triggers saving the filled out member data.
@@ -66,7 +54,7 @@ namespace Lab5.ViewModel
             }
             catch (______________________n)
             {
-                MessageBox.Show("Must be a valid e-mail address.", "Entry Error");
+                MessageBox.Show("Must be a valid quantity address.", "Entry Error");
             }
         }
         /// <summary>
@@ -86,50 +74,48 @@ namespace Lab5.ViewModel
         /// Receives a member from the main VM to auto-fill the change box with the currently selected member.
         /// </summary>
         /// <param name="m">The member data to fill in.</param>
-        public void GetSelected(Member m)
+        public void GetSelected(Product m)
         {
             ___________________________
         }
-        /// <summary>
-        /// The currently entered first name in the change window.
-        /// </summary>
-        public string EnteredFName
+
+        public string EnteredProductId
         {
             get
             {
-                return enteredFName;
+                return enteredProductId;
             }
             set
             {
-                enteredFName = value;
-                RaisePropertyChanged("EnteredFName");
+                enteredProductId = value;
+                RaisePropertyChanged("EnteredProductId");
             }
         }
 
-        public string EnteredLName
+        public string EnteredProductName
         {
             get
             {
-                return enteredLName;
+                return enteredProductName;
             }
             set
             {
-                enteredLName = value;
-                RaisePropertyChanged("EnteredLName");
+                enteredProductName = value;
+                RaisePropertyChanged("EnteredProductName");
             }
         }
-        public string EnteredEmail
+        public string EnteredQuantity
         {
             get
             {
-                return enteredEmail;
+                return enteredQuantity;
             }
             set
             {
-                enteredEmail = value;
-                RaisePropertyChanged("EnteredEmail");
+                enteredQuantity = value;
+                RaisePropertyChanged("EnteredQuantity");
             }
         }
-
     }
 }
+

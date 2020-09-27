@@ -11,23 +11,15 @@ using System.Windows.Input;
 
 namespace Lab5.ViewModel
 {
-    /// <summary>
-    /// The VM for adding users to the list.
-    /// </summary>
+    
     public class AddViewModel : ViewModelBase
     {
-        /// <summary>
-        /// The currently entered first name in the add window.
-        /// </summary>
-        private string enteredFName;
-        /// <summary>
-        /// The currently entered last name in the add window.
-        /// </summary>
-        private string enteredLName;
-        /// <summary>
-        /// The currently entered email in the add window.
-        /// </summary>
-        private string enteredEmail;
+        
+        private string enteredProductId;
+       
+        private string enteredProductName;
+        
+        private string enteredQuantity;
 
         /// <summary>
         /// Initializes a new instance of the AddViewModel class.
@@ -69,7 +61,7 @@ namespace Lab5.ViewModel
             }
             catch (FormatException)
             {
-                MessageBox.Show("Must be a valid e-mail address.", "Entry Error");
+                MessageBox.Show("Must be a valid quantity address.", "Entry Error");
             }
         }
         /// <summary>
@@ -83,44 +75,42 @@ namespace Lab5.ViewModel
                 window.Close();
             }
         }
-        /// <summary>
-        /// The currently entered first name in the add window.
-        /// </summary>
-        public string EnteredFName
+       
+        public string EnteredProductId
         {
             get
             {
-                return enteredFName;
+                return enteredProductId;
             }
             set
             {
-                enteredFName = value;
-                RaisePropertyChanged("EnteredFName");
+                enteredProductId = value;
+                RaisePropertyChanged("EnteredProductId");
             }
         }
 
-        public string EnteredLName
+        public string EnteredProductName
         {
             get
             {
-                return enteredLName;
+                return enteredProductName;
             }
             set
             {
-                enteredLName = value;
-                RaisePropertyChanged("EnteredLName");
+                enteredProductName = value;
+                RaisePropertyChanged("EnteredProductName");
             }
         }
-        public string EnteredEmail
+        public string EnteredQuantity
         {
             get
             {
-                return enteredEmail;
+                return enteredQuantity;
             }
             set
             {
-                enteredEmail = value;
-                RaisePropertyChanged("EnteredEmail");
+                enteredQuantity = value;
+                RaisePropertyChanged("EnteredQuantity");
             }
         }
     }

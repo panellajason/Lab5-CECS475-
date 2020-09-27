@@ -71,9 +71,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IClosable.cs" />
-    <Compile Include="Models\Member.cs" />
-    <Compile Include="Models\MemberDB.cs" />
-    <Compile Include="Models\MessageMember.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductDB.cs" />
+    <Compile Include="Models\MessageProduct.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="ViewModel\ChangeViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

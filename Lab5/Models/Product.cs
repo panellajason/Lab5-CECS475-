@@ -8,46 +8,30 @@ using System.Threading.Tasks;
 
 namespace Lab5.Models
 {
-    /// <summary>
-    /// A class that represents a member of a gym.
-    /// </summary>
-    public class Member : ObservableObject
+    
+    public class Product : ObservableObject
     {
-        /// <summary>
-        /// The member's first name.
-        /// </summary>
-        private string firstName;
-        /// <summary>
-        /// The member's last name.
-        /// </summary>
-        private string lastName;
-        private string email;
+        
+        private string productId;
+        private string productName;
+        private string quantity;
         private int TEXT_LIMIT = 50;
 
-        public Member() { }
-        /// <summary>
-        /// Creates a new member.
-        /// </summary>
-        /// <param name="fName">The member's first name.</param>
-        /// <param name="lName">The member's last name.</param>
-        /// <param name="mail">The member's e-mail.</param>
-        public Member(string fName, string lName, string mail)
+        public Product() { }
+        
+        public Product(string fName, string lName, string mail)
         {
-            firstName = fName;
-            lastName = lName;
-            email = mail;
+            productId = fName;
+            productName = lName;
+            quantity = mail;
         }
 
-        /// <summary>
-        /// A property that gets or sets the member's last name, and makes sure it's not
-        ////too long.
-         /// </summary>
-         /// <returns>The member's last name.</returns>
-         public string LastName
+        
+         public string ProductName
          {
             get
             {
-                return lastName;
+                return productName;
             }
             set
             {
@@ -59,15 +43,15 @@ namespace Lab5.Models
                 {
                     throw new NullReferenceException();
                 }
-                lastName = value;
+                productName = value;
             }
          }
 
-        public string FirstName
+        public string ProductId
         {
             get
             {
-                return firstName;
+                return productId;
             }
             set
             {
@@ -79,18 +63,15 @@ namespace Lab5.Models
                 {
                     throw new NullReferenceException();
                 }
-                firstName = value;
+                productId = value;
             }
         }
-        /// <summary>
-        /// A property that gets or sets the member's e-mail, and makes sure it's not too
-        /// </summary>
-        /// <returns>The member's e-mail.</returns>
-        public string Email
+       
+        public string Quantity
          {
             get
             {
-                return email;
+                return quantity;
             }
             set
             {
@@ -106,7 +87,7 @@ namespace Lab5.Models
                 {
                     throw new FormatException();
                 }
-                email = value;
+                quantity = value;
             }
          }
 
@@ -117,7 +98,7 @@ namespace Lab5.Models
         /// <returns>A concatenation of the member's first name, last name, and email.</returns>
         public string display()
         {
-            return firstName + " " + lastName + ", " + email;
+            return productId + " " + productName + ", " + quantity;
         }
 
     }
