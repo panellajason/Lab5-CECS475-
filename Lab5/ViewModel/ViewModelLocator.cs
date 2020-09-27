@@ -12,9 +12,10 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
+//using Microsoft.Practices.ServiceLocation;
 
 namespace Lab5.ViewModel
 {
@@ -31,18 +32,11 @@ namespace Lab5.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-
+           
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<AddViewModel>();
+            SimpleIoc.Default.Register<ChangeViewModel>();
+
         }
 
         public MainViewModel Main
@@ -52,10 +46,25 @@ namespace Lab5.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public AddViewModel Add
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddViewModel>();
+            }
+        }
+        public ChangeViewModel Change
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ChangeViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
-            // TODO Clear the ViewModels
+           
         }
     }
 }
