@@ -1,9 +1,12 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Lab5.Messages;
 using Lab5.Models;
 using Lab5.Views;
+using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Lab5.ViewModel
@@ -22,21 +25,25 @@ namespace Lab5.ViewModel
         
         public MainViewModel()
         {
-            products =
-            database =
+            products = new ObservableCollection<Product>();
+            database = new ProductDB(products);
             products = database.GetProducts();
-            AddCommand =
-            ExitCommand =
-            ChangeCommand =
+            AddCommand = new RelayCommand(AddMethod);
+            ExitCommand = new RelayCommand<System.Windows.Window>(this.ExitMethod);
+            ChangeCommand = new RelayCommand(ChangeMethod);
             Messenger.Default.Register<MessageProduct>(this, ReceiveProduct);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
+
         /// <summary>
         /// The command that triggers adding a new member.
         /// </summary>
         public ICommand AddCommand { get; private set; }
+        public ICommand ExitCommand { get; private set; }
+        public ICommand ChangeCommand { get; private set; }
 
-        
+
+
         public Product SelectedProduct
         {
             get
@@ -77,7 +84,7 @@ namespace Lab5.ViewModel
             {
                 ChangeWindow change = new ChangeWindow();
                 change.Show();
-                Messenger.Default.Send(__________________________);
+                Messenger.Default.Send(new NotificationMessage("Change"));
             }
         }
         /// <summary>
@@ -89,13 +96,13 @@ namespace Lab5.ViewModel
         {
             if (m.Message == "Update")
             {
-                _____________________________________
-            database.SaveProducts();
+                products[products.IndexOf(SelectedProduct)] = m;
+                database.SaveProducts();
             }
             else if (m.Message == "Add")
             {
-                ______________________________________
-            database.SaveProducts();
+                products.Add(m);
+                database.SaveProducts();
             }
         }
         /// <summary>
@@ -107,7 +114,7 @@ namespace Lab5.ViewModel
         {
             if (msg.Notification == "Delete")
             {
-                _______________________________________________
+                products.Remove(SelectedProduct);
                 database.SaveProducts();
             }
         }

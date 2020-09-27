@@ -27,7 +27,7 @@ namespace Lab5.ViewModel
         public AddViewModel()
         {
             SaveCommand = new RelayCommand<IClosable>(SaveMethod);
-            __________________________________________________
+            CancelCommand = new RelayCommand<IClosable>(CancelMethod);
         }
         /// <summary>
         /// The command that triggers saving the filled out member data.
@@ -47,7 +47,7 @@ namespace Lab5.ViewModel
             {
                 if (window != null)
                 {
-                    Messenger.Default.Send(_______________________________________));
+                    Messenger.Default.Send(new NotificationMessage("Products Saved"));
                     window.Close();
                 }
             }
@@ -61,7 +61,7 @@ namespace Lab5.ViewModel
             }
             catch (FormatException)
             {
-                MessageBox.Show("Must be a valid quantity address.", "Entry Error");
+                MessageBox.Show("Must be a valid quantity.", "Entry Error");
             }
         }
         /// <summary>

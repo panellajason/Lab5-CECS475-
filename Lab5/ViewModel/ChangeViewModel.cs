@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Lab5.Models;
 using System;
@@ -22,8 +23,10 @@ namespace Lab5.ViewModel
 
         public ChangeViewModel()
         {
-            _____________________________________
-            Messenger.Default.Register<Product>(this, ___________________ -);
+            UpdateCommand = new RelayCommand<IClosable>(UpdateMethod);
+            DeleteCommand = new RelayCommand<IClosable>(DeleteMethod);
+
+            Messenger.Default.Register<Product>(this, GetSelected);
         }
         /// <summary>
         /// The command that triggers saving the filled out member data.
@@ -41,20 +44,20 @@ namespace Lab5.ViewModel
         {
             try
             {
-                Messenger.Default.Send(_________________________________________ -));
+                Messenger.Default.Send(new NotificationMessage("Update"));
                 window.Close();
             }
             catch (ArgumentException)
             {
                 MessageBox.Show("Fields must be under 25 characters.", "Entry Error");
             }
-            catch (__________________________n)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Fields cannot be empty.", "Entry Error");
             }
-            catch (______________________n)
+            catch (FormatException)
             {
-                MessageBox.Show("Must be a valid quantity address.", "Entry Error");
+                MessageBox.Show("Must be a valid quantity.", "Entry Error");
             }
         }
         /// <summary>
@@ -65,7 +68,7 @@ namespace Lab5.ViewModel
         {
             if (window != null)
             {
-                Messenger.Default.Send(______________________________________--));
+                Messenger.Default.Send(new NotificationMessage("Delete"));
                 window.Close();
             }
         }
