@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace Lab5.ViewModel
 {
-    
+
     public class ChangeViewModel : ViewModelBase
     {
         private string enteredProductId;
@@ -38,8 +38,8 @@ namespace Lab5.ViewModel
         public ICommand DeleteCommand { get; private set; }
         /// <summary>
         /// Sends a valid member to the main VM to replace at the selected index with, then closes the change window.
-    /// </summary>
-    /// <param name="window">The window to close.</param>
+        /// </summary>
+        /// <param name="window">The window to close.</param>
         public void UpdateMethod(IClosable window)
         {
             try

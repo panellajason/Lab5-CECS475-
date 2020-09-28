@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Lab5.Models
 {
-    
+
     public class Product : ObservableObject
     {
-        
+
         private string productId;
         private string productName;
         private string quantity;
         private int TEXT_LIMIT = 50;
 
         public Product() { }
-        
+
         public Product(string fName, string lName, string mail)
         {
             productId = fName;
@@ -26,9 +26,9 @@ namespace Lab5.Models
             quantity = mail;
         }
 
-        
-         public string ProductName
-         {
+
+        public string ProductName
+        {
             get
             {
                 return productName;
@@ -45,7 +45,7 @@ namespace Lab5.Models
                 }
                 productName = value;
             }
-         }
+        }
 
         public string ProductId
         {
@@ -66,9 +66,9 @@ namespace Lab5.Models
                 productId = value;
             }
         }
-       
+
         public string Quantity
-         {
+        {
             get
             {
                 return quantity;
@@ -89,7 +89,7 @@ namespace Lab5.Models
                 }
                 quantity = value;
             }
-         }
+        }
 
 
         /// <summary>

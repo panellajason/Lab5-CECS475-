@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Lab5.Messages;
 using Lab5.Models;
-using Lab5.Views;
+using Lab5.View;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -16,13 +16,19 @@ namespace Lab5.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-       
+
         private ObservableCollection<Product> products;
-       
+
         private Product selectedProduct;
-        
+
         private ProductDB database;
-        
+        //// <summary>
+        /// The command that triggers adding a new member.
+        /// </summary>
+        public ICommand AddCommand { get; private set; }
+        public ICommand ExitCommand { get; private set; }
+        public ICommand ChangeCommand { get; private set; }
+
         public MainViewModel()
         {
             products = new ObservableCollection<Product>();
@@ -35,13 +41,7 @@ namespace Lab5.ViewModel
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
         }
 
-        /// <summary>
-        /// The command that triggers adding a new member.
-        /// </summary>
-        public ICommand AddCommand { get; private set; }
-        public ICommand ExitCommand { get; private set; }
-        public ICommand ChangeCommand { get; private set; }
-
+        
 
 
         public Product SelectedProduct
@@ -61,7 +61,7 @@ namespace Lab5.ViewModel
         /// </summary>
         public void AddMethod()
         {
-            AddWindow add = new AddWindow();
+            AddView add = new AddView();
             add.Show();
         }
         /// <summary>
@@ -82,7 +82,7 @@ namespace Lab5.ViewModel
         {
             if (SelectedProduct != null)
             {
-                ChangeWindow change = new ChangeWindow();
+                ChangeView change = new ChangeView();
                 change.Show();
                 Messenger.Default.Send(new NotificationMessage("Change"));
             }

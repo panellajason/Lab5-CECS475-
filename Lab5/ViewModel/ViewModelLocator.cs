@@ -32,7 +32,7 @@ namespace Lab5.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-           
+
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<AddViewModel>();
             SimpleIoc.Default.Register<ChangeViewModel>();
@@ -64,7 +64,7 @@ namespace Lab5.ViewModel
 
         public static void Cleanup()
         {
-           
+
         }
     }
 }

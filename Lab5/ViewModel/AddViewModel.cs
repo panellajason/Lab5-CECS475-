@@ -11,14 +11,14 @@ using System.Windows.Input;
 
 namespace Lab5.ViewModel
 {
-    
+
     public class AddViewModel : ViewModelBase
     {
-        
+
         private string enteredProductId;
-       
+
         private string enteredProductName;
-        
+
         private string enteredQuantity;
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Lab5.ViewModel
                 window.Close();
             }
         }
-       
+
         public string EnteredProductId
         {
             get

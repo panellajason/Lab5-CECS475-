@@ -44,7 +44,7 @@ namespace Lab5.Models
             }
             catch (FormatException)
             {
-            
+
                 Console.WriteLine("Invalid quantity address format.");
             }
             return products;
