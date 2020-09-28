@@ -29,7 +29,7 @@ namespace Lab5.ViewModel
             database = new ProductDB(products);
             products = database.GetProducts();
             AddCommand = new RelayCommand(AddMethod);
-            ExitCommand = new RelayCommand<System.Windows.Window>(this.ExitMethod);
+            ExitCommand = new RelayCommand<Window>(ExitMethod);
             ChangeCommand = new RelayCommand(ChangeMethod);
             Messenger.Default.Register<MessageProduct>(this, ReceiveProduct);
             Messenger.Default.Register<NotificationMessage>(this, ReceiveMessage);
@@ -68,7 +68,7 @@ namespace Lab5.ViewModel
         /// Closes the application.
         /// </summary>
         /// <param name="window">The window to close.</param>
-        public void ExitMethod(IClosable window)
+        private void ExitMethod(Window window)
         {
             if (window != null)
             {

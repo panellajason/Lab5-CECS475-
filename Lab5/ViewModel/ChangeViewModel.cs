@@ -79,7 +79,7 @@ namespace Lab5.ViewModel
         /// <param name="m">The member data to fill in.</param>
         public void GetSelected(Product m)
         {
-            ___________________________
+            //___________________________
         }
 
         public string EnteredProductId
